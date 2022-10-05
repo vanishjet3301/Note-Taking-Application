@@ -34,18 +34,21 @@
             this.bRename = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.LBNames = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bRemove = new System.Windows.Forms.Button();
             this.LBDate = new System.Windows.Forms.ListBox();
+            this.bSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // LBCount
             // 
             this.LBCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBCount.FormattingEnabled = true;
-            this.LBCount.ItemHeight = 15;
+            this.LBCount.ItemHeight = 20;
             this.LBCount.Location = new System.Drawing.Point(0, 0);
-            this.LBCount.Name = "listBox1";
-            this.LBCount.Size = new System.Drawing.Size(34, 461);
+            this.LBCount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LBCount.Name = "LBCount";
+            this.LBCount.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.LBCount.Size = new System.Drawing.Size(38, 615);
             this.LBCount.TabIndex = 0;
             // 
             // bAdd
@@ -54,84 +57,113 @@
             this.bAdd.BackgroundImage = global::Note_Taking_Application.Properties.Resources.plus;
             this.bAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bAdd.ForeColor = System.Drawing.SystemColors.Control;
-            this.bAdd.Location = new System.Drawing.Point(594, 12);
+            this.bAdd.Location = new System.Drawing.Point(679, 16);
+            this.bAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(74, 68);
+            this.bAdd.Size = new System.Drawing.Size(85, 91);
             this.bAdd.TabIndex = 1;
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(295, 12);
+            this.textBox1.AcceptsReturn = true;
+            this.textBox1.AcceptsTab = true;
+            this.textBox1.Location = new System.Drawing.Point(335, 0);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 437);
+            this.textBox1.Size = new System.Drawing.Size(230, 581);
             this.textBox1.TabIndex = 2;
+            this.textBox1.Enabled = false;
             // 
             // bRename
             // 
-            this.bRename.Location = new System.Drawing.Point(593, 96);
+            this.bRename.Location = new System.Drawing.Point(678, 128);
+            this.bRename.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bRename.Name = "bRename";
-            this.bRename.Size = new System.Drawing.Size(75, 23);
+            this.bRename.Size = new System.Drawing.Size(86, 31);
             this.bRename.TabIndex = 3;
             this.bRename.Text = "Rename";
             this.bRename.UseVisualStyleBackColor = true;
             this.bRename.Click += new System.EventHandler(this.bRename_Click);
+            this.bRename.Enabled = false;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(477, 96);
+            this.textBox2.Location = new System.Drawing.Point(545, 128);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
+            this.textBox2.Size = new System.Drawing.Size(114, 27);
             this.textBox2.TabIndex = 4;
             // 
-            // listBox2
+            // LBNames
             // 
             this.LBNames.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBNames.FormattingEnabled = true;
-            this.LBNames.ItemHeight = 15;
-            this.LBNames.Location = new System.Drawing.Point(34, 0);
-            this.LBNames.Name = "listBox2";
-            this.LBNames.Size = new System.Drawing.Size(120, 461);
+            this.LBNames.ItemHeight = 20;
+            this.LBNames.Location = new System.Drawing.Point(38, 0);
+            this.LBNames.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LBNames.Name = "LBNames";
+            this.LBNames.Size = new System.Drawing.Size(137, 615);
             this.LBNames.TabIndex = 5;
+            this.LBNames.SelectedIndexChanged += new System.EventHandler(this.LBNames_SelectedIndexChanged);
             // 
-            // button1
+            // bRemove
             // 
-            this.button1.Location = new System.Drawing.Point(594, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bRemove.Location = new System.Drawing.Point(679, 180);
+            this.bRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bRemove.Name = "bRemove";
+            this.bRemove.Size = new System.Drawing.Size(86, 31);
+            this.bRemove.TabIndex = 6;
+            this.bRemove.Text = "Remove";
+            this.bRemove.UseVisualStyleBackColor = true;
+            this.bRemove.Click += new System.EventHandler(this.bRemove_Click);
+            this.bRemove.Enabled = false;
             // 
-            // listBox3
+            // LBDate
             // 
             this.LBDate.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBDate.FormattingEnabled = true;
-            this.LBDate.ItemHeight = 15;
-            this.LBDate.Location = new System.Drawing.Point(154, 0);
-            this.LBDate.Name = "listBox3";
-            this.LBDate.Size = new System.Drawing.Size(135, 461);
+            this.LBDate.ItemHeight = 20;
+            this.LBDate.Location = new System.Drawing.Point(175, 0);
+            this.LBDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LBDate.Name = "LBDate";
+            this.LBDate.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.LBDate.Size = new System.Drawing.Size(154, 615);
             this.LBDate.TabIndex = 7;
+            // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(679, 229);
+            this.bSave.Name = "bSave";
+            this.bSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bSave.Size = new System.Drawing.Size(85, 29);
+            this.bSave.TabIndex = 8;
+            this.bSave.Text = "Save";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            this.bSave.Enabled = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 461);
+            this.ClientSize = new System.Drawing.Size(784, 615);
+            this.Controls.Add(this.bSave);
             this.Controls.Add(this.LBDate);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bRemove);
             this.Controls.Add(this.LBNames);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.bRename);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.LBCount);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notes";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,7 +177,8 @@
         private Button bRename;
         private TextBox textBox2;
         private ListBox LBNames;
-        private Button button1;
+        private Button bRemove;
         private ListBox LBDate;
+        private Button bSave;
     }
 }
