@@ -5,7 +5,8 @@ namespace Note_Taking_Application
     public partial class Form1 : Form
     {
         string NoteName = "New Note";
-        bool IsRemoved = false;
+        bool BeingRemoved = false;
+        bool BeingRenamed = false;
         private void bAva(bool a)
         {
             textBox1.Enabled = a;
@@ -29,21 +30,24 @@ namespace Note_Taking_Application
         private void bRename_Click(object sender, EventArgs e)
         {
             DialogResult result = DialogResult.Yes;
+            BeingRenamed = true;
             int ind = LBNames.SelectedIndex;
             if (RenameTB.Text == "") 
             { 
                 MessageBox.Show("Enter at least one symbol");
                 return;
             }
-            bool Exists = false;
+            bool StringExists = false;
+            
             string[] ls = File.ReadAllLines("NNamesStorage.txt");
             for (int i = 0; i < ls.Length; i++)
             {
-                if (ls[i].Contains(RenameTB.Text)) { Exists = true; }
+                if (ls[i] == RenameTB.Text) { StringExists = true; break; }
 
             }
-            if (Exists)
+            if (StringExists)
             {
+                string LBNameTemp = LBNames.SelectedItem.ToString();
                 result = MessageBox.Show(
                 "File with this name already exists and will be removed. Continue?", "",
                 MessageBoxButtons.YesNo,
@@ -53,44 +57,33 @@ namespace Note_Taking_Application
                 {
                     LBNames.SelectedIndex = LBNames.Items.IndexOf(RenameTB.Text);
                     bRemove_Click(sender, e);
-
+                    LBNames.SelectedIndex = LBNames.Items.IndexOf(LBNameTemp);
+                    ind = LBNames.SelectedIndex;
                 }
-                return;
-            }
-            else if (File.Exists(@".\Notes\" + RenameTB.Text + ".txt"))
-            {
-                result = MessageBox.Show(
-                "File with this name already exists and will be removed. Continue?", "",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button1);
-                if (result == DialogResult.Yes)
-                {
-                    LBNames.SelectedIndex = LBNames.Items.IndexOf(RenameTB.Text);
-                    bRemove_Click(sender, e);
 
-                }
             }
+            
             if(result == DialogResult.Yes)
             {
-
+                
                 if (File.Exists(@".\Notes\" + LBNames.SelectedItem + ".txt"))
                 {
                     File.Move(@".\Notes\" + LBNames.SelectedItem + ".txt", @".\Notes\" + RenameTB.Text + ".txt");
-                    string[] ls = File.ReadAllLines("NNamesStorage.txt");
+                    ls = File.ReadAllLines("NNamesStorage.txt");
                     for (int i = 0; i < ls.Length; i++)
                     {
-                        if (ls[i].Contains(LBNames.SelectedItem.ToString())) { ls[i] = RenameTB.Text; }
+                        if (ls[i].Contains(LBNames.SelectedItem.ToString())) { ls[i] = RenameTB.Text; break; }
                             
                     }
                     
                     File.WriteAllLines("NNamesStorage.txt", ls);
                 }
-                IsRemoved = true;
+
                 LBNames.Items.RemoveAt(ind);
                 LBNames.Items.Insert(ind, RenameTB.Text);
-
+                
             }
+            BeingRenamed = false;
         }
 
         private void bRemove_Click(object sender, EventArgs e)
@@ -107,7 +100,7 @@ namespace Note_Taking_Application
                 File.WriteAllLines(@".\NNamesStorage.txt", newLs);
                 
             }
-            IsRemoved = true;
+            BeingRemoved = true;
             LBNames.Items.RemoveAt(ind);
             LBDate.Items.RemoveAt(ind);
             LBCount.Items.Clear();
@@ -116,12 +109,12 @@ namespace Note_Taking_Application
                 LBCount.Items.Add($"{i + 1}.");
             }
             bAva(false);
-            IsRemoved = false;
+            BeingRemoved = false;
         }
 
         private void LBNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(IsRemoved) { return; }
+            if(BeingRemoved || BeingRenamed) { return; }
             bAva(true);
             if (Directory.Exists("Notes"))
             {
