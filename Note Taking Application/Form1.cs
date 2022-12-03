@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Note_Taking_Application
 {
@@ -21,6 +22,61 @@ namespace Note_Taking_Application
 
         private void bAdd_Click(object sender, EventArgs e)
         {   
+            void Add(int a)
+            {
+                LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
+                LBNames.Items.Add(NoteName + (a));
+                LBDate.Items.Add(DateTime.Now);
+                File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + (a));
+            }
+            if (File.Exists(@"NNamesStorage.txt"))
+            {
+                int[] DefaultNameIndexes;
+                int NumofIndexes = 0;
+                int j = 0;
+                string[] ls = File.ReadAllLines(@".\NNamesStorage.txt");
+                for (int i = 0; i < ls.Length; i++)
+                {
+                    if (ls[i].Contains("New Note")) { NumofIndexes++; }
+                }
+                DefaultNameIndexes = new int[NumofIndexes];
+                for (int i = 0; i < ls.Length; i++)
+                {
+                    if (ls[i].Contains("New Note"))
+                    {
+                        string[] subs = ls[i].Split("New Note", StringSplitOptions.RemoveEmptyEntries);
+                        if(subs.Length == 1)
+                        {
+                            if (int.TryParse(subs[0], out DefaultNameIndexes[j])) { j++; }
+                        }
+                    }
+                }
+                DefaultNameIndexes = DefaultNameIndexes.Where(x => !(x == 0)).ToArray();
+                Array.Sort(DefaultNameIndexes);
+                for(int i = 0; i < DefaultNameIndexes.Length; i++)
+                {
+                    if(i + 1 < DefaultNameIndexes.Length) 
+                    {
+                        if(DefaultNameIndexes[i] + 1 != DefaultNameIndexes[i + 1])
+                        {
+                            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
+                            LBNames.Items.Add(NoteName + (DefaultNameIndexes[i] + 1));
+                            LBDate.Items.Add(DateTime.Now);
+                            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + (DefaultNameIndexes[i] + 1));
+                            return;
+                        }
+                        else if (DefaultNameIndexes[0] != 1)
+                        {
+                            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
+                            LBNames.Items.Add(NoteName + 1);
+                            LBDate.Items.Add(DateTime.Now);
+                            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + 1);
+                            return;
+                        }
+                    }
+                }
+                
+            }
             LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
             LBNames.Items.Add(NoteName + (LBNames.Items.Count + 1));
             LBDate.Items.Add(DateTime.Now);
