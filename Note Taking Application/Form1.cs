@@ -71,7 +71,10 @@ namespace Note_Taking_Application
                 }
                 
             }
-            Add(LBNames.Items.Count + 1);
+            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
+            LBNames.Items.Add(NoteName + (LBNames.Items.Count + 1));
+            LBDate.Items.Add(DateTime.Now);
+            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + LBNames.Items.Count);
         }
 
         private void bRename_Click(object sender, EventArgs e)
@@ -131,6 +134,7 @@ namespace Note_Taking_Application
                 
             }
             BeingRenamed = false;
+            bAva(false);
         }
 
         private void bRemove_Click(object sender, EventArgs e)
