@@ -59,28 +59,19 @@ namespace Note_Taking_Application
                     {
                         if(DefaultNameIndexes[i] + 1 != DefaultNameIndexes[i + 1])
                         {
-                            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
-                            LBNames.Items.Add(NoteName + (DefaultNameIndexes[i] + 1));
-                            LBDate.Items.Add(DateTime.Now);
-                            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + (DefaultNameIndexes[i] + 1));
+                            Add(DefaultNameIndexes[i] + 1);
                             return;
                         }
                         else if (DefaultNameIndexes[0] != 1)
                         {
-                            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
-                            LBNames.Items.Add(NoteName + 1);
-                            LBDate.Items.Add(DateTime.Now);
-                            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + 1);
+                            Add(1);
                             return;
                         }
                     }
                 }
                 
             }
-            LBCount.Items.Add(($"{LBNames.Items.Count + 1}."));
-            LBNames.Items.Add(NoteName + (LBNames.Items.Count + 1));
-            LBDate.Items.Add(DateTime.Now);
-            File.AppendAllText(@".\NNamesStorage.txt", Environment.NewLine + NoteName + LBNames.Items.Count);
+            Add(LBNames.Items.Count + 1);
         }
 
         private void bRename_Click(object sender, EventArgs e)
@@ -183,7 +174,7 @@ namespace Note_Taking_Application
                 }
                 catch
                 {
-                    MessageBox.Show("Err inCH");
+                    MessageBox.Show("Форсаж до пива");
                 }
 
                 try
