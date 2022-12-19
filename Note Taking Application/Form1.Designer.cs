@@ -54,14 +54,14 @@
             // bAdd
             // 
             this.bAdd.AutoSize = true;
-            this.bAdd.BackgroundImage = global::Note_Taking_Application.Properties.Resources.plus;
             this.bAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bAdd.ForeColor = System.Drawing.SystemColors.Control;
-            this.bAdd.Location = new System.Drawing.Point(679, 16);
+            this.bAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bAdd.Location = new System.Drawing.Point(725, 13);
             this.bAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(85, 91);
             this.bAdd.TabIndex = 1;
+            this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
@@ -69,17 +69,19 @@
             // 
             this.textBox1.AcceptsReturn = true;
             this.textBox1.AcceptsTab = true;
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(335, 0);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 581);
+            this.textBox1.Size = new System.Drawing.Size(220, 615);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Enabled = false;
             // 
             // bRename
             // 
-            this.bRename.Location = new System.Drawing.Point(678, 128);
+            this.bRename.Enabled = false;
+            this.bRename.Location = new System.Drawing.Point(724, 112);
             this.bRename.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bRename.Name = "bRename";
             this.bRename.Size = new System.Drawing.Size(86, 31);
@@ -87,9 +89,8 @@
             this.bRename.Text = "Rename";
             this.bRename.UseVisualStyleBackColor = true;
             this.bRename.Click += new System.EventHandler(this.bRename_Click);
-            this.bRename.Enabled = false;
             // 
-            // textBox2
+            // RenameTB
             // 
             this.textBox2.Location = new System.Drawing.Point(545, 128);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -111,7 +112,8 @@
             // 
             // bRemove
             // 
-            this.bRemove.Location = new System.Drawing.Point(679, 180);
+            this.bRemove.Enabled = false;
+            this.bRemove.Location = new System.Drawing.Point(725, 182);
             this.bRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bRemove.Name = "bRemove";
             this.bRemove.Size = new System.Drawing.Size(86, 31);
@@ -119,7 +121,6 @@
             this.bRemove.Text = "Remove";
             this.bRemove.UseVisualStyleBackColor = true;
             this.bRemove.Click += new System.EventHandler(this.bRemove_Click);
-            this.bRemove.Enabled = false;
             // 
             // LBDate
             // 
@@ -135,7 +136,8 @@
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(679, 229);
+            this.bSave.Enabled = false;
+            this.bSave.Location = new System.Drawing.Point(726, 220);
             this.bSave.Name = "bSave";
             this.bSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bSave.Size = new System.Drawing.Size(85, 29);
@@ -143,13 +145,12 @@
             this.bSave.Text = "Save";
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
-            this.bSave.Enabled = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 615);
+            this.ClientSize = new System.Drawing.Size(822, 615);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.LBDate);
             this.Controls.Add(this.bRemove);
@@ -159,7 +160,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.LBCount);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notes";
