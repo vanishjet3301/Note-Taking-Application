@@ -32,7 +32,7 @@
             this.bAdd = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.bRename = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.RenameTB = new System.Windows.Forms.TextBox();
             this.LBNames = new System.Windows.Forms.ListBox();
             this.bRemove = new System.Windows.Forms.Button();
             this.LBDate = new System.Windows.Forms.ListBox();
@@ -92,11 +92,11 @@
             // 
             // RenameTB
             // 
-            this.textBox2.Location = new System.Drawing.Point(545, 128);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 27);
-            this.textBox2.TabIndex = 4;
+            this.RenameTB.Location = new System.Drawing.Point(545, 128);
+            this.RenameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.RenameTB.Name = "textBox2";
+            this.RenameTB.Size = new System.Drawing.Size(114, 27);
+            this.RenameTB.TabIndex = 4;
             // 
             // LBNames
             // 
@@ -155,7 +155,7 @@
             this.Controls.Add(this.LBDate);
             this.Controls.Add(this.bRemove);
             this.Controls.Add(this.LBNames);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.RenameTB);
             this.Controls.Add(this.bRename);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.bAdd);
@@ -178,7 +178,7 @@
         private Button bAdd;
         private TextBox textBox1;
         private Button bRename;
-        private TextBox textBox2;
+        private TextBox RenameTB;
         private ListBox LBNames;
         private Button bRemove;
         private ListBox LBDate;
