@@ -30,7 +30,7 @@
         {
             this.LBCount = new System.Windows.Forms.ListBox();
             this.bAdd = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbNoteText = new System.Windows.Forms.TextBox();
             this.bRename = new System.Windows.Forms.Button();
             this.RenameTB = new System.Windows.Forms.TextBox();
             this.LBNames = new System.Windows.Forms.ListBox();
@@ -67,16 +67,16 @@
             // 
             // textBox1
             // 
-            this.textBox1.AcceptsReturn = true;
-            this.textBox1.AcceptsTab = true;
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(335, 0);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 615);
-            this.textBox1.TabIndex = 2;
+            this.tbNoteText.AcceptsReturn = true;
+            this.tbNoteText.AcceptsTab = true;
+            this.tbNoteText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tbNoteText.Enabled = false;
+            this.tbNoteText.Location = new System.Drawing.Point(335, 0);
+            this.tbNoteText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbNoteText.Multiline = true;
+            this.tbNoteText.Name = "textBox1";
+            this.tbNoteText.Size = new System.Drawing.Size(220, 615);
+            this.tbNoteText.TabIndex = 2;
             // 
             // bRename
             // 
@@ -157,7 +157,7 @@
             this.Controls.Add(this.LBNames);
             this.Controls.Add(this.RenameTB);
             this.Controls.Add(this.bRename);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbNoteText);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.LBCount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -176,7 +176,7 @@
 
         private ListBox LBCount;
         private Button bAdd;
-        private TextBox textBox1;
+        private TextBox tbNoteText;
         private Button bRename;
         private TextBox RenameTB;
         private ListBox LBNames;

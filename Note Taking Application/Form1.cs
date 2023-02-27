@@ -1,4 +1,7 @@
-﻿using System.Drawing;
+﻿/*
+ * Clicking on lisbox enables textbox!
+ */
+using System.Drawing;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Note_Taking_Application
@@ -8,12 +11,12 @@ namespace Note_Taking_Application
         string NoteName = "New Note";
         bool BeingRemoved = false;
         bool BeingRenamed = false;
-        private void bAva(bool a)
+        private void bIsEnabled(bool isEnabled)
         {
-            textBox1.Enabled = a;
-            bSave.Enabled = a;
-            bRename.Enabled = a;
-            bRemove.Enabled = a;
+            tbNoteText.Enabled = isEnabled;
+            bSave.Enabled = isEnabled;
+            bRename.Enabled = isEnabled;
+            bRemove.Enabled = isEnabled;
         }
         public Form1()
         {
@@ -93,7 +96,6 @@ namespace Note_Taking_Application
             for (int i = 0; i < ls.Length; i++)
             {
                 if (ls[i] == RenameTB.Text) { StringExists = true; break; }
-
             }
             if (StringExists)
             {
@@ -134,7 +136,7 @@ namespace Note_Taking_Application
                 
             }
             BeingRenamed = false;
-            bAva(false);
+            bIsEnabled(false);
         }
 
         private void bRemove_Click(object sender, EventArgs e)
@@ -159,40 +161,21 @@ namespace Note_Taking_Application
             {
                 LBCount.Items.Add($"{i + 1}.");
             }
-            bAva(false);
+            bIsEnabled(false);
             BeingRemoved = false;
         }
 
         private void LBNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(BeingRemoved || BeingRenamed) { return; }
-            bAva(true);
+            bIsEnabled(true);
             if (Directory.Exists("Notes"))
             {
-                textBox1.Text = "";
-                int i;
-                FileStream FS = null;
-                try
+                tbNoteText.Text = "";
+                string filePath = @".\Notes\" + LBNames.SelectedItem + ".txt";
+                using (StreamReader reader = new StreamReader(filePath))
                 {
-                    FS = new FileStream(@".\Notes\" + LBNames.SelectedItem + ".txt", FileMode.OpenOrCreate);
-                }
-                catch
-                {
-                    MessageBox.Show("Форсаж до пива");
-                }
-
-                try
-                {
-                    do
-                    {
-                        i = FS.ReadByte();
-                        if (i != -1) textBox1.Text += (char)i;
-                    }
-                    while (i != -1);
-                }
-                finally
-                {
-                    FS.Close();
+                    tbNoteText.Text = reader.ReadToEnd();
                 }
             }
         }
@@ -207,21 +190,9 @@ namespace Note_Taking_Application
 
             if(result == DialogResult.Yes)
             {
-                FileStream FS = null;
-                char[] text = textBox1.Text.ToCharArray();
-                try
+                using (StreamWriter writer = new StreamWriter(@".\Notes\" + LBNames.SelectedItem.ToString() + ".txt"))
                 {
-                    FS = new FileStream(@".\Notes\" + LBNames.SelectedItem.ToString() + ".txt", FileMode.Create);
-
-                    for(int i = 0; i < text.Length; i++) FS.WriteByte((byte) text[i]);
-                }
-                catch (IOException exc)
-                {
-                    Console.WriteLine("I/O Error:\n" + exc.Message);
-                }
-                finally
-                {
-                    if (FS != null) FS.Close();
+                    writer.Write(tbNoteText.Text);
                 }
             }
 
