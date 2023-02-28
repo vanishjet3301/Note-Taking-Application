@@ -173,9 +173,13 @@ namespace Note_Taking_Application
             {
                 tbNoteText.Text = "";
                 string filePath = @".\Notes\" + LBNames.SelectedItem + ".txt";
-                using (StreamReader reader = new StreamReader(filePath))
+
+                using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate))
                 {
-                    tbNoteText.Text = reader.ReadToEnd();
+                    using (StreamReader reader = new StreamReader(fs))
+                    {
+                        tbNoteText.Text = reader.ReadToEnd();
+                    }
                 }
             }
         }
