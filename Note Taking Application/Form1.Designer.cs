@@ -43,12 +43,11 @@
             // 
             this.LBCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBCount.FormattingEnabled = true;
-            this.LBCount.ItemHeight = 20;
+            this.LBCount.ItemHeight = 15;
             this.LBCount.Location = new System.Drawing.Point(0, 0);
-            this.LBCount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LBCount.Name = "LBCount";
             this.LBCount.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.LBCount.Size = new System.Drawing.Size(38, 615);
+            this.LBCount.Size = new System.Drawing.Size(34, 461);
             this.LBCount.TabIndex = 0;
             // 
             // bAdd
@@ -56,35 +55,32 @@
             this.bAdd.AutoSize = true;
             this.bAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bAdd.Location = new System.Drawing.Point(725, 13);
-            this.bAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bAdd.Location = new System.Drawing.Point(621, 10);
             this.bAdd.Name = "bAdd";
-            this.bAdd.Size = new System.Drawing.Size(85, 91);
+            this.bAdd.Size = new System.Drawing.Size(74, 68);
             this.bAdd.TabIndex = 1;
             this.bAdd.Text = "Add";
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
-            // textBox1
+            // tbNoteText
             // 
             this.tbNoteText.AcceptsReturn = true;
             this.tbNoteText.AcceptsTab = true;
             this.tbNoteText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tbNoteText.Enabled = false;
-            this.tbNoteText.Location = new System.Drawing.Point(335, 0);
-            this.tbNoteText.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbNoteText.Location = new System.Drawing.Point(293, 0);
             this.tbNoteText.Multiline = true;
-            this.tbNoteText.Name = "textBox1";
-            this.tbNoteText.Size = new System.Drawing.Size(220, 615);
+            this.tbNoteText.Name = "tbNoteText";
+            this.tbNoteText.Size = new System.Drawing.Size(310, 462);
             this.tbNoteText.TabIndex = 2;
             // 
             // bRename
             // 
             this.bRename.Enabled = false;
-            this.bRename.Location = new System.Drawing.Point(724, 112);
-            this.bRename.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bRename.Location = new System.Drawing.Point(620, 84);
             this.bRename.Name = "bRename";
-            this.bRename.Size = new System.Drawing.Size(86, 31);
+            this.bRename.Size = new System.Drawing.Size(75, 23);
             this.bRename.TabIndex = 3;
             this.bRename.Text = "Rename";
             this.bRename.UseVisualStyleBackColor = true;
@@ -92,31 +88,28 @@
             // 
             // RenameTB
             // 
-            this.RenameTB.Location = new System.Drawing.Point(545, 128);
-            this.RenameTB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.RenameTB.Name = "textBox2";
-            this.RenameTB.Size = new System.Drawing.Size(114, 27);
+            this.RenameTB.Location = new System.Drawing.Point(609, 107);
+            this.RenameTB.Name = "RenameTB";
+            this.RenameTB.Size = new System.Drawing.Size(100, 23);
             this.RenameTB.TabIndex = 4;
             // 
             // LBNames
             // 
             this.LBNames.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBNames.FormattingEnabled = true;
-            this.LBNames.ItemHeight = 20;
-            this.LBNames.Location = new System.Drawing.Point(38, 0);
-            this.LBNames.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LBNames.ItemHeight = 15;
+            this.LBNames.Location = new System.Drawing.Point(34, 0);
             this.LBNames.Name = "LBNames";
-            this.LBNames.Size = new System.Drawing.Size(137, 615);
+            this.LBNames.Size = new System.Drawing.Size(120, 461);
             this.LBNames.TabIndex = 5;
             this.LBNames.SelectedIndexChanged += new System.EventHandler(this.LBNames_SelectedIndexChanged);
             // 
             // bRemove
             // 
             this.bRemove.Enabled = false;
-            this.bRemove.Location = new System.Drawing.Point(725, 182);
-            this.bRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.bRemove.Location = new System.Drawing.Point(621, 136);
             this.bRemove.Name = "bRemove";
-            this.bRemove.Size = new System.Drawing.Size(86, 31);
+            this.bRemove.Size = new System.Drawing.Size(75, 23);
             this.bRemove.TabIndex = 6;
             this.bRemove.Text = "Remove";
             this.bRemove.UseVisualStyleBackColor = true;
@@ -126,21 +119,21 @@
             // 
             this.LBDate.Dock = System.Windows.Forms.DockStyle.Left;
             this.LBDate.FormattingEnabled = true;
-            this.LBDate.ItemHeight = 20;
-            this.LBDate.Location = new System.Drawing.Point(175, 0);
-            this.LBDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LBDate.ItemHeight = 15;
+            this.LBDate.Location = new System.Drawing.Point(154, 0);
             this.LBDate.Name = "LBDate";
             this.LBDate.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.LBDate.Size = new System.Drawing.Size(154, 615);
+            this.LBDate.Size = new System.Drawing.Size(135, 461);
             this.LBDate.TabIndex = 7;
             // 
             // bSave
             // 
             this.bSave.Enabled = false;
-            this.bSave.Location = new System.Drawing.Point(726, 220);
+            this.bSave.Location = new System.Drawing.Point(621, 164);
+            this.bSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bSave.Name = "bSave";
             this.bSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bSave.Size = new System.Drawing.Size(85, 29);
+            this.bSave.Size = new System.Drawing.Size(74, 22);
             this.bSave.TabIndex = 8;
             this.bSave.Text = "Save";
             this.bSave.UseVisualStyleBackColor = true;
@@ -148,9 +141,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(822, 615);
+            this.ClientSize = new System.Drawing.Size(719, 461);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.LBDate);
             this.Controls.Add(this.bRemove);
@@ -161,7 +154,6 @@
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.LBCount);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

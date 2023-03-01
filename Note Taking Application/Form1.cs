@@ -82,6 +82,11 @@ namespace Note_Taking_Application
 
         private void bRename_Click(object sender, EventArgs e)
         {
+            if (LBNames.SelectedItem == null)
+            {
+                MessageBox.Show("Choose note to preform an action"); 
+                return;
+            }
             DialogResult result = DialogResult.Yes;
             BeingRenamed = true;
             int ind = LBNames.SelectedIndex;
@@ -124,8 +129,7 @@ namespace Note_Taking_Application
                     ls = File.ReadAllLines("NNamesStorage.txt");
                     for (int i = 0; i < ls.Length; i++)
                     {
-                        if (ls[i].Contains(LBNames.SelectedItem.ToString())) { ls[i] = RenameTB.Text; break; }
-                            
+                        if (ls[i].Contains(LBNames.SelectedItem.ToString())) { ls[i] = RenameTB.Text; break; }                           
                     }
                     
                     File.WriteAllLines("NNamesStorage.txt", ls);
@@ -141,6 +145,11 @@ namespace Note_Taking_Application
 
         private void bRemove_Click(object sender, EventArgs e)
         {
+            if (LBNames.SelectedItem == null)
+            {
+                MessageBox.Show("Choose note to preform an action");
+                return;
+            }
             int ind = LBNames.SelectedIndex;
             if(File.Exists(@".\Notes\" + LBNames.SelectedItem + ".txt"))
             {
@@ -150,8 +159,7 @@ namespace Note_Taking_Application
             if (ls.Contains(LBNames.SelectedItem))
             {
                 var newLs = ls.Where(line => !line.Contains(LBNames.SelectedItem.ToString()));
-                File.WriteAllLines(@".\NNamesStorage.txt", newLs);
-                
+                File.WriteAllLines(@".\NNamesStorage.txt", newLs);               
             }
             BeingRemoved = true;
             LBNames.Items.RemoveAt(ind);
@@ -167,7 +175,7 @@ namespace Note_Taking_Application
 
         private void LBNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(BeingRemoved || BeingRenamed) { return; }
+            if (BeingRemoved || BeingRenamed) { return; }
             bIsEnabled(true);
             if (Directory.Exists("Notes"))
             {
@@ -185,14 +193,19 @@ namespace Note_Taking_Application
         }
 
         private void bSave_Click(object sender, EventArgs e) //!!date
-        {
+        {            
             DialogResult result = MessageBox.Show(
                 "Save changes?", "",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
                 MessageBoxDefaultButton.Button1);
 
-            if(result == DialogResult.Yes)
+            if (result == DialogResult.Yes && LBNames.SelectedItem == null)
+            {
+                MessageBox.Show("Choose note to preform an action");
+                return;
+            }
+            else if (result == DialogResult.Yes)
             {
                 using (StreamWriter writer = new StreamWriter(@".\Notes\" + LBNames.SelectedItem.ToString() + ".txt"))
                 {
@@ -220,7 +233,7 @@ namespace Note_Taking_Application
                 }
                 NoteName = "New Note";
             }
-            else using (File.Create("NNamesStorage.txt")) ;
+            else using (File.Create("NNamesStorage.txt"));
         }
     }//props
 }
