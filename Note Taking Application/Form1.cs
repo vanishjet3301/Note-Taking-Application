@@ -1,7 +1,4 @@
-﻿/*
- * Clicking on lisbox enables textbox!
- */
-using System.Drawing;
+﻿using System.Drawing;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Note_Taking_Application
@@ -35,14 +32,14 @@ namespace Note_Taking_Application
             if (File.Exists(@"NNamesStorage.txt"))
             {
                 int[] DefaultNameIndexes;
-                int NumofIndexes = 0;
+                int NumOfIndexes = 0;
                 int j = 0;
                 string[] ls = File.ReadAllLines(@".\NNamesStorage.txt");
                 for (int i = 0; i < ls.Length; i++)
                 {
-                    if (ls[i].Contains("New Note")) { NumofIndexes++; }
+                    if (ls[i].Contains("New Note")) { NumOfIndexes++; }
                 }
-                DefaultNameIndexes = new int[NumofIndexes];
+                DefaultNameIndexes = new int[NumOfIndexes];
                 for (int i = 0; i < ls.Length; i++)
                 {
                     if (ls[i].Contains("New Note"))
@@ -175,7 +172,7 @@ namespace Note_Taking_Application
 
         private void LBNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (BeingRemoved || BeingRenamed) { return; }
+            if (BeingRemoved || BeingRenamed || LBNames.SelectedItem == null) return;
             bIsEnabled(true);
             if (Directory.Exists("Notes"))
             {
@@ -235,5 +232,7 @@ namespace Note_Taking_Application
             }
             else using (File.Create("NNamesStorage.txt"));
         }
+
+        
     }//props
 }
