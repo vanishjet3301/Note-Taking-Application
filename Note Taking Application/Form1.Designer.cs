@@ -110,6 +110,7 @@
             // 
             // dataGridView
             // 
+            dataGridView.BorderStyle = BorderStyle.None;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Location = new Point(2, 9);
             dataGridView.Name = "dataGridView";

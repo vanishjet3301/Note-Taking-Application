@@ -30,7 +30,7 @@ namespace DataManagement
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                var noteText = connection.QuerySingleOrDefault<string>("select Text from Notes where NoteName = @NoteName", new { NoteName = NoteName });
+                var noteText = connection.QuerySingleOrDefault<string>("select Text from Notes where NoteName = @NoteName", new { NoteName = NoteName });//not
                 return noteText ?? string.Empty;
             }
         }
@@ -52,7 +52,9 @@ namespace DataManagement
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                connection.Execute("insert into Notes (NoteName, EditTime, NoteText) values (@NoteName, @EditTime, @Text)", note);
+                //connection.Execute("insert into Notes (NoteName, EditTime, Text) values (@NoteName, @EditTime, @Text)", note);
+                connection.Execute("insert into Notes default values", note);
+                LoadNotes();
             }
         }
         public static void EditNoteText(string NoteName, string Text, string EditTime)

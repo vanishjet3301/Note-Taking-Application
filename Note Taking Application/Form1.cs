@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using DataManagement;
 using static System.Net.Mime.MediaTypeNames;
 
-/*  Bimba
+/*  
  *  ToDo
  *  1. AddingNotes, 2. RenamingNotes, 3. Removing, 4. Saving
  *  Issues
@@ -32,7 +32,8 @@ namespace Note_Taking_Application
         }
         private void bAdd_Click(object sender, EventArgs e)
         {
-
+            DataAccess.SaveNote(new DataManagement.NoteModel());
+            Form1_Load(sender, e);
         }
 
         private void bRename_Click(object sender, EventArgs e)
