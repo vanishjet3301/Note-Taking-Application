@@ -12,56 +12,45 @@ namespace DataManagement
 {
     public class DataAccess
     {
-        public static DataTable LoadNotes()
+        public static List<NoteModel> LoadNotes()
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                string query = "SELECT NoteName, EditTime FROM Notes";
+                List<NoteModel> notes = new List<NoteModel>();
 
-                using (IDataReader reader = connection.ExecuteReader(query))
-                {
-                    DataTable table = new DataTable();
-                    table.Load(reader);
-                    return table;
-                }
+                connection.Open();
+                return connection.Query<NoteModel>("Select * From Notes").ToList();
+
             }
         }
-        public static string ReadNoteText(string NoteName)
+        
+        public static void RenameNote(int Id, string NewNoteName)
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                var noteText = connection.QuerySingleOrDefault<string>("select Text from Notes where NoteName = @NoteName", new { NoteName = NoteName });//not
-                return noteText ?? string.Empty;
+                connection.Execute("update Notes set NoteName = @NewNoteName where Id = @Id", new { NewNoteName, Id });
             }
         }
-        public static void RenameNote(string OldNoteName, string NewNoteName)
+        public static void DeleteNote(List<int> ids)
+        {
+            string sequence = string.Join(',', ids);
+            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
+            {
+                connection.Execute($"delete from Notes where Id in ({sequence})");
+            }
+        }
+        public static void AddNote(NoteModel note) 
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                connection.Execute("update Notes set NoteName = @NewNoteName where NoteName = @OldNoteName", new { NewNoteName, OldNoteName });
-            }
-        }
-        public static void DeleteNote(string NoteName)
-        {
-            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
-            {
-                connection.Execute("delete from Notes where NoteName = @NoteName", new { NoteName });
-            }
-        }
-        public static void SaveNote(NoteModel note) 
-        {
-            using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
-            {
-                //connection.Execute("insert into Notes (NoteName, EditTime, Text) values (@NoteName, @EditTime, @Text)", note);
                 connection.Execute("insert into Notes default values", note);
-                LoadNotes();
             }
         }
-        public static void EditNoteText(string NoteName, string Text, string EditTime)
+        public static void SaveNoteText(int Id, string Text, string EditTime)
         {
             using (IDbConnection connection = new SQLiteConnection(LoadConnectionString()))
             {
-                connection.Execute("update Notes set Text = @Text, EditTime = @EditTime where NoteName = @NoteName", new {Text, EditTime, NoteName});
+                connection.Execute("update Notes set Text = @Text, EditTime = @EditTime where Id = @Id", new {Text, EditTime, Id});
             }
         }
         private static string LoadConnectionString(string name = "Default")

@@ -31,8 +31,6 @@
             components = new System.ComponentModel.Container();
             bAdd = new Button();
             tbNoteText = new TextBox();
-            bRename = new Button();
-            RenameTB = new TextBox();
             bRemove = new Button();
             bSave = new Button();
             dataGridView = new DataGridView();
@@ -66,28 +64,9 @@
             tbNoteText.Size = new Size(310, 462);
             tbNoteText.TabIndex = 2;
             // 
-            // bRename
-            // 
-            bRename.Enabled = false;
-            bRename.Location = new Point(620, 84);
-            bRename.Name = "bRename";
-            bRename.Size = new Size(75, 23);
-            bRename.TabIndex = 3;
-            bRename.Text = "Rename";
-            bRename.UseVisualStyleBackColor = true;
-            bRename.Click += bRename_Click;
-            // 
-            // RenameTB
-            // 
-            RenameTB.Location = new Point(609, 107);
-            RenameTB.Name = "RenameTB";
-            RenameTB.Size = new Size(100, 23);
-            RenameTB.TabIndex = 4;
-            // 
             // bRemove
             // 
-            bRemove.Enabled = false;
-            bRemove.Location = new Point(621, 136);
+            bRemove.Location = new Point(620, 101);
             bRemove.Name = "bRemove";
             bRemove.Size = new Size(75, 23);
             bRemove.TabIndex = 6;
@@ -98,7 +77,7 @@
             // bSave
             // 
             bSave.Enabled = false;
-            bSave.Location = new Point(621, 164);
+            bSave.Location = new Point(621, 129);
             bSave.Margin = new Padding(3, 2, 3, 2);
             bSave.Name = "bSave";
             bSave.RightToLeft = RightToLeft.No;
@@ -112,13 +91,14 @@
             // 
             dataGridView.BorderStyle = BorderStyle.None;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView.Location = new Point(2, 9);
+            dataGridView.Location = new Point(2, 0);
             dataGridView.Name = "dataGridView";
             dataGridView.RowTemplate.Height = 25;
-            dataGridView.Size = new Size(285, 440);
+            dataGridView.Size = new Size(285, 449);
             dataGridView.TabIndex = 9;
+            dataGridView.CellBeginEdit += dataGridView_CellBeginEdit;
             dataGridView.CellEndEdit += dataGridView_CellEndEdit;
-            dataGridView.CellEnter += dataGridView_CellEnter;
+            dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
             // noteModelBindingSource
             // 
@@ -132,8 +112,6 @@
             Controls.Add(dataGridView);
             Controls.Add(bSave);
             Controls.Add(bRemove);
-            Controls.Add(RenameTB);
-            Controls.Add(bRename);
             Controls.Add(tbNoteText);
             Controls.Add(bAdd);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -151,8 +129,6 @@
         #endregion
         private Button bAdd;
         private TextBox tbNoteText;
-        private Button bRename;
-        private TextBox RenameTB;
         private Button bRemove;
         private Button bSave;
         private DataGridView dataGridView;
