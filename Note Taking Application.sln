@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Note Taking Application", "Note Taking Application\Note Taking Application.csproj", "{484FF0F1-08BB-4673-8A7E-5CA58E73D045}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Note Taking Application", "Note Taking Application\Note Taking Application.csproj", "{484FF0F1-08BB-4673-8A7E-5CA58E73D045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataManagement", "DataManagement\DataManagement.csproj", "{A8A98970-2BC6-4637-82D1-168F557CCDF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{484FF0F1-08BB-4673-8A7E-5CA58E73D045}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{484FF0F1-08BB-4673-8A7E-5CA58E73D045}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{484FF0F1-08BB-4673-8A7E-5CA58E73D045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A98970-2BC6-4637-82D1-168F557CCDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A98970-2BC6-4637-82D1-168F557CCDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A98970-2BC6-4637-82D1-168F557CCDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A98970-2BC6-4637-82D1-168F557CCDF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
